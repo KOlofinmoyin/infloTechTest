@@ -1,4 +1,4 @@
-# User Management Technical Exercise
+# User Management Technical Exercise - by Kehinde P. Olofinmoyin
 
 The exercise is an ASP.NET Core web application backed by Entity Framework Core, which faciliates management of some fictional users.
 We recommend that you use [Visual Studio (Community Edition)](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/Download) to run and modify the application. 
