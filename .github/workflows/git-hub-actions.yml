@@ -37,7 +37,7 @@ jobs:
           NODE_VERSION: '20'
 
       - name: Navigate to UserManagement.Web directory
-        run: cd UserManagement.Web
+        run: cd ./TechTest/UserManagement.Web
 
       - name: Install dependencies
         run: npm install
