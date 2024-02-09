@@ -8,4 +8,7 @@
     <ProjectReference Include="..\UserManagement.Services\UserManagement.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="package-lock.json" />
+  </ItemGroup>
 </Project>

@@ -47,6 +47,6 @@ public class UsersController : Controller
             Items = activeItems.ToList()
         };
 
-        return View("List", model); // Assuming there's a view named "List" for this action
+        return View("List", model); 
     }
 }
