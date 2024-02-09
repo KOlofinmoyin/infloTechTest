@@ -6,49 +6,62 @@ describe("User Management Page", () => {
 
     beforeEach(async () => {
         driver = await new Builder().forBrowser("chrome").build();
-        await driver.manage().setTimeouts({ implicit: 5000 }); // Adjust the timeout if necessary
+        await driver.manage().setTimeouts({ implicit: 5000 });
+        //Maximize current window
+        await driver.manage().window().maximize();
+
+        const baseUrl = "https://localhost:7084/users";
+        await driver.get(baseUrl);
     });
 
     afterEach(async () => {
         await driver.quit();
     });
 
-    it("Customer can 'Show All' users in db", async () => {
+    it("Should display ALL users when clicking the 'Show All' button", async () => {
         const { expect } = await import("chai");
 
-        const baseUrl = "https://localhost:7084/users";
-        await driver.get(baseUrl);
+        //const baseUrl = "https://localhost:7084/users";
+        //await driver.get(baseUrl);
         const element = await driver.findElement(By.xpath("//a[contains(text(), 'Show All')]"));
         await driver.executeScript("arguments[0].click();", element);
         // Locate the <tr> element with 'Active Only' attributes using XPath
         const activeElement = await driver.findElement(By.xpath("//tr[td[contains(text(), 'Benjamin Franklin')]]"));
 
-        // Assert that the <tr> element is present
+        // Assert that the Active user is present
         expect(await activeElement.isDisplayed()).to.be.true;
 
         // Locate the <tr> element with 'Non Active' attributes using XPath
         const inActiveElement = await driver.findElement(By.xpath("//tr[td[contains(text(), 'Castor')]]"));
 
-        // Assert that the <tr> element is present
+        // Assert that the 'Non Active' user is present
         expect(await inActiveElement.isDisplayed()).to.be.true;
 
 
     });
 
-    it("Customer can view 'Active Only' users in db", async () => {
+ 
+
+    it("Should filter out non-active records when clicking 'Active Only' button", async () => {
         const { expect } = await import("chai");
 
-        const baseUrl = "https://localhost:7084/users";
-        await driver.get(baseUrl);
-        const element = await driver.findElement(By.xpath("//a[contains(text(), 'Active Only')]"));
-        await driver.executeScript("arguments[0].click();", element);
 
-        // Locate the <tr> element with 'Non Active attributes using XPath
-        const inActiveElement = await driver.findElement(By.xpath("//tr[td[contains(text(), 'Castor')]]"));
+        // Click on the 'Active Only' button
+        const activeOnlyButton = await driver.findElement(By.xpath("//a[contains(text(), 'Active Only')]"));
+        await driver.executeScript("arguments[0].click();", activeOnlyButton);
 
-        // Assert that the <tr> element is present
-        expect(await inActiveElement.isDisplayed()).to.be.false;
+        // Wait for the page to reload and data to update
+        // Locate all elements in the 'Active Account' column
+        const activeAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account')]"));
 
+        // Verify that all elements in the 'Active Account' column have the text 'Yes'
+        for (const element of activeAccountElements) {
+            const text = await element.getText();
+            expect(text).toBe("Yes");
+        }
 
+        // Ensure that there are no elements with the text 'No' in the 'Active Account' column
+        const inactiveAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account') and contains(text(), 'No')]"));
+        expect(inactiveAccountElements.length).to.equal(0);
     });
 });
