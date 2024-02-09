@@ -18,28 +18,43 @@ jobs:
           echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          node-version: '20'
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
           title: Automated PR from ${{ github.event.repository.name }}
           branch: ${{ github.ref }}
+        env:
+          NODE_VERSION: '20'
 
       - name: Display pull request information
         run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner and a pull request created."
           echo "🖥️ The workflow is now ready to test your code on the runner."
+        env:
+          NODE_VERSION: '20'
+
       - name: Build and test
         run: |
           # Add commands to build and test your code here
           # For example:
           npm install
           npm test
+        env:
+          NODE_VERSION: '20'
+
       - name: Deploy to main branch
         if: github.ref == 'refs/heads/main'
         run: |
           # Add commands to deploy your code to the main branch here
           # For example:
           npm run deploy
+        env:
+          NODE_VERSION: '20'
+
       - name: Open HTML report
         run: echo "Your test-report can now be viewed within the directory './mochawesome-report/mochawesome.html'"
+        env:
+          NODE_VERSION: '20'
