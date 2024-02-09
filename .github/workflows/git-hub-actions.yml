@@ -42,4 +42,4 @@ jobs:
           # For example:
           npm run deploy
       - name: Open HTML report
-        run: echo "Your test-report can now be viewed within the directory: mochawesome-report/mochawesome.html"
+        run: echo "Your test-report can now be viewed within the directory './mochawesome-report/mochawesome.html'"
