@@ -29,4 +29,24 @@ public class UsersController : Controller
 
         return View(model);
     }
+
+    [HttpGet("active")]
+    public ViewResult ListActiveUsers()
+    {
+        var activeItems = _userService.GetAll().Where(p => p.IsActive).Select(p => new UserListItemViewModel
+        {
+            Id = p.Id,
+            Forename = p.Forename,
+            Surname = p.Surname,
+            Email = p.Email,
+            IsActive = p.IsActive
+        });
+
+        var model = new UserListViewModel
+        {
+            Items = activeItems.ToList()
+        };
+
+        return View("List", model); // Assuming there's a view named "List" for this action
+    }
 }
