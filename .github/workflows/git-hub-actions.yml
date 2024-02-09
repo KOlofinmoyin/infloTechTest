@@ -36,11 +36,16 @@ jobs:
         env:
           NODE_VERSION: '20'
 
+      - name: Navigate to UserManagement.Web directory
+        run: cd UserManagement.Web
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Build and test
         run: |
           # Add commands to build and test your code here
           # For example:
-          npm install
           npm test
         env:
           NODE_VERSION: '20'
