@@ -31,7 +31,7 @@ jobs:
       - name: List contents of UserManagement.Web directory
         run: ls
 
-      - Show content of package json
+      - name:Show content of package json
         run: cat UserManagement.Web/package.json
 
       - name: Install npm dependencies
