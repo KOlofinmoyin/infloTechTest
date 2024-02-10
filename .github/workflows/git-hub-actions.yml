@@ -40,6 +40,7 @@ jobs:
       - run: npm install
 
       - name: Build ASP.NET Core application
+        run: cd UserManagement.Web
         run: dotnet build
 
       - name: Start ASP.NET Core application
