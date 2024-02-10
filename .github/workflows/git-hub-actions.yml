@@ -49,8 +49,6 @@ jobs:
           cd UserManagement.Web
           dotnet run
 
-      - name: Wait for application to start
-        run: sleep 30
 
       - name: Run Selenium tests
         run: |
