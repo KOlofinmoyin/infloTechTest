@@ -55,7 +55,7 @@ jobs:
       - name: Run Selenium tests
         run: |
           cd UserManagement.Web
-          npm test
+          ./node_modules/.bin/mocha --no-timeouts --reporter mochawesome
 
       - name: Create pull request
         id: create_pr
