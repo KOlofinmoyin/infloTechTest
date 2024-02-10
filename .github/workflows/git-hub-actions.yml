@@ -47,8 +47,10 @@ jobs:
       - name: Start ASP.NET Core application
         run: |
           cd UserManagement.Web
-          dotnet run
+          dotnet run &
 
+      - name: Wait for application to start
+        run: sleep 30
 
       - name: Run Selenium tests
         run: |
