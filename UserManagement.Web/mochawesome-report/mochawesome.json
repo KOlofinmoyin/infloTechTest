@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2024-02-10T22:39:25.008Z",
-    "end": "2024-02-10T22:39:43.012Z",
-    "duration": 18004,
+    "start": "2024-02-10T23:03:53.672Z",
+    "end": "2024-02-10T23:04:09.616Z",
+    "duration": 15944,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "bc81d18f-f094-4292-a38d-eb85df2e34de",
+      "uuid": "16a791b6-fd83-483e-88cd-566f169405f4",
       "title": "",
       "fullFile": "/Users/kolofinmoyin/Documents/Projects/TechTest/UserManagement.Web/test/UserListView.js",
       "file": "/test/UserListView.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ec25a1ee-80b3-40de-910a-a310933a1888",
+          "uuid": "e799abac-c497-40f7-8562-9644098adfb2",
           "title": "User Management Page",
           "fullFile": "/Users/kolofinmoyin/Documents/Projects/TechTest/UserManagement.Web/test/UserListView.js",
           "file": "/test/UserListView.js",
@@ -36,7 +36,7 @@
               "title": "\"before each\" hook in \"User Management Page\"",
               "fullTitle": "User Management Page \"before each\" hook in \"User Management Page\"",
               "timedOut": false,
-              "duration": 4347,
+              "duration": 3053,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "driver = await new Builder().forBrowser(\"chrome\").build();\nawait driver.manage().setTimeouts({ implicit: 5000 });\n//Maximize current window\nawait driver.manage().window().maximize();\nconst baseUrl = \"https://localhost:7084/users\";\nawait driver.get(baseUrl);",
               "err": {},
-              "uuid": "ff414962-0dda-40ad-9df3-d9a4f60e4289",
-              "parentUUID": "ec25a1ee-80b3-40de-910a-a310933a1888",
+              "uuid": "57cb70b6-db3c-4ef9-ad2b-232c0323123a",
+              "parentUUID": "e799abac-c497-40f7-8562-9644098adfb2",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after each\" hook in \"User Management Page\"",
               "fullTitle": "User Management Page \"after each\" hook in \"User Management Page\"",
               "timedOut": false,
-              "duration": 56,
+              "duration": 53,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "await driver.quit();",
               "err": {},
-              "uuid": "bfdc878e-1679-49b3-b206-bb4bc4445381",
-              "parentUUID": "ec25a1ee-80b3-40de-910a-a310933a1888",
+              "uuid": "d8dd9cc5-ca3c-4b7f-a7c6-e361969a7ac3",
+              "parentUUID": "e799abac-c497-40f7-8562-9644098adfb2",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "Should display ALL users when clicking the 'Show All' button",
               "fullTitle": "User Management Page Should display ALL users when clicking the 'Show All' button",
               "timedOut": false,
-              "duration": 103,
+              "duration": 93,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,8 +85,8 @@
               "context": null,
               "code": "const { expect } = await import(\"chai\");\n//const baseUrl = \"https://localhost:7084/users\";\n//await driver.get(baseUrl);\nconst element = await driver.findElement(By.xpath(\"//a[contains(text(), 'Show All')]\"));\nawait driver.executeScript(\"arguments[0].click();\", element);\n// Locate the <tr> element with 'Active Only' attributes using XPath\nconst activeElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Benjamin Franklin')]]\"));\n// Assert that the Active user is present\nexpect(await activeElement.isDisplayed()).to.be.true;\n// Locate the <tr> element with 'Non Active' attributes using XPath\nconst inActiveElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Castor')]]\"));\n// Assert that the 'Non Active' user is present\nexpect(await inActiveElement.isDisplayed()).to.be.true;",
               "err": {},
-              "uuid": "d2d38c3e-0386-45de-8585-606564ce8b16",
-              "parentUUID": "ec25a1ee-80b3-40de-910a-a310933a1888",
+              "uuid": "318df684-7945-41cd-804f-354c4cd18356",
+              "parentUUID": "e799abac-c497-40f7-8562-9644098adfb2",
               "isHook": false,
               "skipped": false
             },
@@ -94,7 +94,7 @@
               "title": "Should filter out non-active records when clicking 'Active Only' button",
               "fullTitle": "User Management Page Should filter out non-active records when clicking 'Active Only' button",
               "timedOut": false,
-              "duration": 10125,
+              "duration": 10077,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -103,21 +103,21 @@
               "context": null,
               "code": "const { expect } = await import(\"chai\");\n\n// Click on the 'Active Only' button\nconst activeOnlyButton = await driver.findElement(By.xpath(\"//a[contains(text(), 'Active Only')]\"));\nawait driver.executeScript(\"arguments[0].click();\", activeOnlyButton);\n// Wait for the page to reload and data to update\n// Locate all elements in the 'Active Account' column\nconst activeAccountElements = await driver.findElements(By.xpath(\"//td[contains(@class, 'active-account')]\"));\n// Verify that all elements in the 'Active Account' column have the text 'Yes'\nfor (const element of activeAccountElements) {\n    const text = await element.getText();\n    expect(text).toBe(\"Yes\");\n}\n// Ensure that there are no elements with the text 'No' in the 'Active Account' column\nconst inactiveAccountElements = await driver.findElements(By.xpath(\"//td[contains(@class, 'active-account') and contains(text(), 'No')]\"));\nexpect(inactiveAccountElements.length).to.equal(0);",
               "err": {},
-              "uuid": "20650f63-f41d-4aa9-b715-ed30b6c6ea46",
-              "parentUUID": "ec25a1ee-80b3-40de-910a-a310933a1888",
+              "uuid": "0a29773f-9dad-4fbe-b1b6-dea755b49f21",
+              "parentUUID": "e799abac-c497-40f7-8562-9644098adfb2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d2d38c3e-0386-45de-8585-606564ce8b16",
-            "20650f63-f41d-4aa9-b715-ed30b6c6ea46"
+            "318df684-7945-41cd-804f-354c4cd18356",
+            "0a29773f-9dad-4fbe-b1b6-dea755b49f21"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 10228,
+          "duration": 10170,
           "root": false,
           "rootEmpty": false,
           "_timeout": 0
