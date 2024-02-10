@@ -63,7 +63,7 @@ jobs:
         run: |
           gh pr create --title "Automated PR from ${{ github.event.repository.name }}" --body "Automated PR created by GitHub Actions" --base main --head ${{ github.ref }}
 
-      - name: Merge pull request to main branch
+      - name: Merge pull request
         if: steps.create_pr.outputs.pr_number
         run: gh pr merge --auto ${{ steps.create_pr.outputs.pr_number }}
 
