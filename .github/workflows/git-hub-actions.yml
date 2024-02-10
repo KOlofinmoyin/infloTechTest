@@ -39,7 +39,7 @@ jobs:
           node-version: '14'
 
       - name: Remove existing mocha symlink
-        run: rm /home/runner/work/infloTechTest/infloTechTest/UserManagement.Web/node_modules/.bin/_mocha
+        run: rm /home/runner/work/infloTechTest/infloTechTest/node_modules/.bin/_mocha
 
 
       - name: Install npm dependencies
