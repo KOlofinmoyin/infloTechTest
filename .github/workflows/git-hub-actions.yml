@@ -28,6 +28,12 @@ jobs:
       - name: Navigate to UserManagement.Web directory
         run: cd UserManagement.Web
 
+      - name: List contents of UserManagement.Web directory
+        run: ls
+
+      - Show content of package json
+        run: cat package.json
+
       - name: Install npm dependencies
         run: npm install
 
