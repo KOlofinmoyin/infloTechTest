@@ -58,6 +58,7 @@ jobs:
       - name: Run Selenium tests
         run: |
           cd UserManagement.Web
+          npm install
           npm test
 
       - name: Create pull request
