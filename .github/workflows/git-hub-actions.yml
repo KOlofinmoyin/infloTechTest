@@ -33,11 +33,16 @@ jobs:
       - name: Show content of package.json
         run: cat UserManagement.Web/package.json
 
-      - name: Install npm dependencies
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm install --force
+
+      - name: Remove existing mocha symlink
+        run: rm /home/runner/work/infloTechTest/infloTechTest/node_modules/.bin/mocha
+
+      - name: Install npm dependencies
+        run: npm install
 
       - name: Build ASP.NET Core application
         run: |
