@@ -31,7 +31,7 @@ jobs:
         run: ls
 
       - name: Show content of package.json
-        run: cat package.json
+        run: cat UserManagement.Web/package.json
 
       - name: Install npm dependencies
         uses: actions/setup-node@v2
