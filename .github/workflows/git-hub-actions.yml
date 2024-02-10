@@ -32,7 +32,7 @@ jobs:
         run: ls
 
       - Show content of package json
-        run: cat package.json
+        run: cat UserManagement.Web/package.json
 
       - name: Install npm dependencies
         run: npm install
