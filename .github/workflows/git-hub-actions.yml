@@ -39,9 +39,10 @@ jobs:
           node-version: '14'
       - run: npm install
 
-      - name: Build ASP.NET Core application
-        run: cd UserManagement.Web
-        run: dotnet build
+     - name: Build ASP.NET Core application
+       run: |
+        cd UserManagement.Web
+        dotnet build
 
       - name: Start ASP.NET Core application
         run: dotnet run
