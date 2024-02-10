@@ -1,5 +1,4 @@
 name: TechTest - Pull Request, Build, Test, and Deploy GitHub Actions
-run-name: ${{ github.actor }} is running GitHub Actions 🚀
 
 on:
   push:
@@ -18,8 +17,8 @@ jobs:
           echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
       - name: Checkout code
-       - uses: actions/checkout@v4
-      with:
+        uses: actions/checkout@v4
+
       - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v1
         with:
@@ -31,13 +30,14 @@ jobs:
       - name: List contents of UserManagement.Web directory
         run: ls
 
-      - name: Show content of package json
-        run: cat UserManagement.Web/package.json
+      - name: Show content of package.json
+        run: cat package.json
 
       - name: Install npm dependencies
-      - uses: actions/checkout@v4
-      with:
-        run: npm install
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
 
       - name: Build ASP.NET Core application
         run: dotnet build
@@ -63,8 +63,6 @@ jobs:
 
       - name: Deploy to main branch
         if: github.ref == 'refs/heads/main'
-        run: |
-          # Add commands to deploy your code to the main branch here
 
       - name: Open HTML report
         run: echo "Your test-report can now be viewed within the directory './mochawesome-report/mochawesome.html'"
