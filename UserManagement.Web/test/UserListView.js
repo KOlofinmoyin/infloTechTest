@@ -20,9 +20,6 @@ describe("User Management Page", () => {
         await driver.manage().setTimeouts({ implicit: 5000 });
         //Maximize current window
         await driver.manage().window().maximize();
-
-        const baseUrl = "http://localhost:5000/users";
-        await driver.get(baseUrl);
     });
 
     afterEach(async () => {
@@ -31,7 +28,8 @@ describe("User Management Page", () => {
 
     it("Should display ALL users when clicking the 'Show All' button", async () => {
         const { expect } = await import("chai");
-
+        const baseUrl = "http://localhost:5000/users";
+        await driver.get(baseUrl);
         const element = await driver.findElement(By.xpath("//a[contains(text(), 'Show All')]"));
         await driver.executeScript("arguments[0].click();", element);
         // Locate the <tr> element with 'Active Only' attributes using XPath
@@ -54,7 +52,8 @@ describe("User Management Page", () => {
     it("Should filter out non-active records when clicking 'Active Only' button", async () => {
         const { expect } = await import("chai");
 
-
+        const baseUrl = "http://localhost:5000/users";
+        await driver.get(baseUrl);
         // Click on the 'Active Only' button
         const activeOnlyButton = await driver.findElement(By.xpath("//a[contains(text(), 'Active Only')]"));
         await driver.executeScript("arguments[0].click();", activeOnlyButton);
@@ -66,11 +65,11 @@ describe("User Management Page", () => {
         // Verify that all elements in the 'Active Account' column have the text 'Yes'
         for (const element of activeAccountElements) {
             const text = await element.getText();
-            expect(text).toBe("Yes");
+            expect(text).toBe("Yes", "Expected all elements in 'Active Account' column to have text 'Yes'");
         }
 
         // Ensure that there are no elements with the text 'No' in the 'Active Account' column
         const inactiveAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account') and contains(text(), 'No')]"));
-        expect(inactiveAccountElements.length).to.equal(0);
+        expect(inactiveAccountElements.length).to.equal(0, "Expected no elements with text 'No' in 'Active Account' column");
     });
 });
