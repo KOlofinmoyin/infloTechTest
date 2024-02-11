@@ -49,4 +49,24 @@ public class UsersController : Controller
 
         return View("List", model); 
     }
+
+    [HttpGet("non-active")]
+    public ViewResult ListNonActiveUsers()
+    {
+        var nonActiveItems = _userService.GetAll().Where(p => !p.IsActive).Select(p => new UserListItemViewModel
+        {
+            Id = p.Id,
+            Forename = p.Forename,
+            Surname = p.Surname,
+            Email = p.Email,
+            IsActive = p.IsActive
+        });
+
+        var model = new UserListViewModel
+        {
+            Items = nonActiveItems.ToList()
+        };
+
+        return View("List", model);
+    }
 }
