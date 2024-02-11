@@ -10,11 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      - name: Acquire repo. secret & tokens
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps: 
       - name: Display event information
         run: |
+          echo "✏️ The repo secret & tokens were successfully acquired."
           echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
           echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
