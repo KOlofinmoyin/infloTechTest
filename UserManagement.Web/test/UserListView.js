@@ -9,6 +9,12 @@ describe("User Management Page", () => {
         let options = new chrome.Options();
         options.addArguments('--headless'); // Enable headless mode
 
+        // Add options to clear cache
+        options.setUserPreferences({
+            'profile.default_content_settings': { 'images': 2 },
+            'profile.managed_default_content_settings': { 'images': 2 }
+        });
+
 
         driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
         await driver.manage().setTimeouts({ implicit: 5000 });
