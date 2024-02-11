@@ -47,7 +47,7 @@ jobs:
         run: google-chrome --version
 
       - name: Download Chromedriver
-        run: wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/121.0.6167.85/linux64/chromedriver-linux64.zip
+        run: wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chromedriver-linux64.zip
 
       - name: Extract Chromedriver
         run: unzip chromedriver-linux64.zip -d chromedriver
