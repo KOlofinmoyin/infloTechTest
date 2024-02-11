@@ -1,11 +1,16 @@
 
 const { Builder, By, until, Key } = require("selenium-webdriver");
+const chrome = require('selenium-webdriver/chrome');
 
 describe("User Management Page", () => {
     let driver;
 
     beforeEach(async () => {
-        driver = await new Builder().forBrowser("chrome").build();
+        let options = new chrome.Options();
+        options.addArguments('--headless'); // Enable headless mode
+
+
+        driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
         await driver.manage().setTimeouts({ implicit: 5000 });
         //Maximize current window
         await driver.manage().window().maximize();
