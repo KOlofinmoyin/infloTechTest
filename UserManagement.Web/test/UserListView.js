@@ -47,7 +47,6 @@ describe("User Management Page", () => {
 
     });
 
- 
 
     it("Should filter out non-active records when clicking 'Active Only' button", async () => {
         const { expect } = await import("chai");
@@ -72,4 +71,31 @@ describe("User Management Page", () => {
         const inactiveAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account') and contains(text(), 'No')]"));
         expect(inactiveAccountElements.length).to.equal(0, "Expected no elements with text 'No' in 'Active Account' column");
     });
+
+
+    it("Should filter out active records when clicking 'Non Active' button", async () => {
+        const { expect } = await import("chai");
+
+        const baseUrl = "http://localhost:5000/users";
+        await driver.get(baseUrl);
+
+        // Click on the 'Non Active' button
+        const nonActiveButton = await driver.findElement(By.xpath("//a[contains(text(), 'Non Active')]"));
+        // Wait for the page to reload and data to update
+        await driver.executeScript("arguments[0].click();", nonActiveButton);
+
+        // Locate all elements in the 'Non Active Account' column
+        const inactiveAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account')]"));
+
+        // Verify that all elements in the 'Non Active Account' column have the text 'No'
+        for (const element of inactiveAccountElements) {
+            const text = await element.getText();
+            expect(text).toBe("No", "Expected all elements in 'Non Active Account' column to have text 'No'");
+        }
+
+        // Ensure that there are no elements with the text 'Yes' in the 'Non Active Account' column
+        const activeAccountElements = await driver.findElements(By.xpath("//td[contains(@class, 'active-account') and contains(text(), 'Yes')]"));
+        expect(activeAccountElements.length).to.equal(0, "Expected no elements with text 'Yes' in 'Non Active Account' column");
+    });
+
 });
