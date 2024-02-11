@@ -41,7 +41,7 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 120
+          chrome-version: 121
 
       - name: Print Chrome version
         run: google-chrome --version
