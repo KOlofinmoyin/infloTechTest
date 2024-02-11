@@ -75,7 +75,7 @@ jobs:
       - name: Start ASP.NET Core application
         run: |
           cd UserManagement.Web
-          dotnet run &
+          dotnet run --urls=http://localhost:5000/users &
 
       - name: Wait for application to start
         run: sleep 30

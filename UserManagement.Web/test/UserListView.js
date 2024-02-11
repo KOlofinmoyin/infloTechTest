@@ -10,7 +10,7 @@ describe("User Management Page", () => {
         //Maximize current window
         await driver.manage().window().maximize();
 
-        const baseUrl = "https://localhost:7084/users";
+        const baseUrl = "http://localhost:5000/users";
         await driver.get(baseUrl);
     });
 
