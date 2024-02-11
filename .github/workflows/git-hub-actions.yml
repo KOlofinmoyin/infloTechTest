@@ -47,7 +47,12 @@ jobs:
         run: google-chrome --version
 
       - name: Install Chromedriver
-        uses: browser-actions/setup-chromedriver@v1
+        run: |
+          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget -qP /tmp/ "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+          unzip -qq /tmp/chromedriver_linux64.zip -d /tmp
+          sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Install npm dependencies
         run: |
