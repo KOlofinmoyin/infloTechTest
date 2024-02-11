@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      - name: Acquire repo. secret & tokens
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps: 
