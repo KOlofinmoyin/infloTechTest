@@ -9,6 +9,9 @@ jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
     steps: 
       - name: Display event information
         run: |
