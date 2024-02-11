@@ -75,8 +75,7 @@ jobs:
       - name: Start ASP.NET Core application
         run: |
           cd UserManagement.Web
-          dotnet run
-          wait $!
+          dotnet run &
 
       - name: Wait for application to start
         run: sleep 10
