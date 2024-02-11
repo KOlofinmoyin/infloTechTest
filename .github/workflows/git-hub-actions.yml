@@ -52,8 +52,10 @@ jobs:
       - name: Extract Chromedriver
         run: unzip chrome-linux64.zip -d chromedriver
 
+
       - name: Add Chromedriver to PATH
-        run: echo "export PATH=\$PATH:$(pwd)/chromedriver" >> $GITHUB_ENV
+        run: echo "export PATH=\$PATH:$(pwd)/UserManagement.Web/chromedriver" >> $GITHUB_ENV
+
 
       - name: Verify Chromedriver Installation
         run: chromedriver --version
