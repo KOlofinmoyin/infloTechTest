@@ -1,3 +1,5 @@
+[![TechTest - Pull Request, Build, Test, and Deploy GitHub Actions](https://github.com/KOlofinmoyin/infloTechTest/actions/workflows/git-hub-actions.yml/badge.svg)](https://github.com/KOlofinmoyin/infloTechTest/actions/workflows/git-hub-actions.yml)
+
 # User Management Technical Exercise - by Kehinde P. Olofinmoyin
 
 The exercise is an ASP.NET Core web application backed by Entity Framework Core, which faciliates management of some fictional users.
