@@ -39,13 +39,12 @@ jobs:
           node-version: '14'
 
       - name: Setup Chrome
-        uses: actions/setup-chrome@v3
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 120
 
       - name: Print Chrome version
         run: google-chrome --version
-
-      - name: Remove existing mocha symlink
-        run: rm /home/runner/work/infloTechTest/infloTechTest/UserManagement.Web/node_modules/.bin/_mocha
 
       - name: Install npm dependencies
         run: |
