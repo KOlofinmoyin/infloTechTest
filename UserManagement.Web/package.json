@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-    "scripts": {
-        "test": "mocha --no-timeouts --reporter mochawesome"
-    },
+  "scripts": {
+    "test": "mocha --no-timeouts --reporter mochawesome"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
