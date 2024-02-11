@@ -75,10 +75,11 @@ jobs:
       - name: Start ASP.NET Core application
         run: |
           cd UserManagement.Web
-          dotnet run --urls=http://localhost:5000/users &
+          dotnet run
+          wait $!
 
       - name: Wait for application to start
-        run: sleep 30
+        run: sleep 10
 
       - name: Run Selenium tests
         run: |

@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2024-02-11T12:23:57.381Z",
-    "end": "2024-02-11T12:24:09.680Z",
-    "duration": 12299,
+    "start": "2024-02-11T13:23:21.674Z",
+    "end": "2024-02-11T13:23:33.893Z",
+    "duration": 12219,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "6f5f8515-3d4b-45a9-9487-4a54db1d6253",
+      "uuid": "ed795ce7-07f8-4a65-90dd-dec2eace6424",
       "title": "",
       "fullFile": "/Users/kolofinmoyin/Documents/Projects/TechTest/UserManagement.Web/test/UserListView.js",
       "file": "/test/UserListView.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "32efe730-8b12-40ff-ac08-433c5827cf7b",
+          "uuid": "b29f59a6-00ae-40d8-ac5a-2afbcfd0b4cd",
           "title": "User Management Page",
           "fullFile": "/Users/kolofinmoyin/Documents/Projects/TechTest/UserManagement.Web/test/UserListView.js",
           "file": "/test/UserListView.js",
@@ -36,7 +36,7 @@
               "title": "\"before each\" hook in \"User Management Page\"",
               "fullTitle": "User Management Page \"before each\" hook in \"User Management Page\"",
               "timedOut": false,
-              "duration": 689,
+              "duration": 696,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "let options = new chrome.Options();\noptions.addArguments('--headless'); // Enable headless mode\n\ndriver = await new Builder().forBrowser(\"chrome\").setChromeOptions(options).build();\nawait driver.manage().setTimeouts({ implicit: 5000 });\n//Maximize current window\nawait driver.manage().window().maximize();\nconst baseUrl = \"http://localhost:5000/users\";\nawait driver.get(baseUrl);",
               "err": {},
-              "uuid": "bec62226-0e47-4286-82ac-2be687df165f",
-              "parentUUID": "32efe730-8b12-40ff-ac08-433c5827cf7b",
+              "uuid": "7630e1be-635a-4c63-9ec7-ce7162177b17",
+              "parentUUID": "b29f59a6-00ae-40d8-ac5a-2afbcfd0b4cd",
               "isHook": true,
               "skipped": false
             }
@@ -65,8 +65,8 @@
               "context": null,
               "code": "await driver.quit();",
               "err": {},
-              "uuid": "2b08b4c8-170f-4707-ae22-334644e47637",
-              "parentUUID": "32efe730-8b12-40ff-ac08-433c5827cf7b",
+              "uuid": "be2229f3-d510-47a0-818b-7d0484a4bd2f",
+              "parentUUID": "b29f59a6-00ae-40d8-ac5a-2afbcfd0b4cd",
               "isHook": true,
               "skipped": false
             }
@@ -76,17 +76,17 @@
               "title": "Should display ALL users when clicking the 'Show All' button",
               "fullTitle": "User Management Page Should display ALL users when clicking the 'Show All' button",
               "timedOut": false,
-              "duration": 87,
+              "duration": 79,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "const { expect } = await import(\"chai\");\n//const baseUrl = \"https://localhost:7084/users\";\n//await driver.get(baseUrl);\nconst element = await driver.findElement(By.xpath(\"//a[contains(text(), 'Show All')]\"));\nawait driver.executeScript(\"arguments[0].click();\", element);\n// Locate the <tr> element with 'Active Only' attributes using XPath\nconst activeElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Benjamin Franklin')]]\"));\n// Assert that the Active user is present\nexpect(await activeElement.isDisplayed()).to.be.true;\n// Locate the <tr> element with 'Non Active' attributes using XPath\nconst inActiveElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Castor')]]\"));\n// Assert that the 'Non Active' user is present\nexpect(await inActiveElement.isDisplayed()).to.be.true;",
+              "code": "const { expect } = await import(\"chai\");\nconst element = await driver.findElement(By.xpath(\"//a[contains(text(), 'Show All')]\"));\nawait driver.executeScript(\"arguments[0].click();\", element);\n// Locate the <tr> element with 'Active Only' attributes using XPath\nconst activeElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Benjamin Franklin')]]\"));\n// Assert that the Active user is present\nexpect(await activeElement.isDisplayed()).to.be.true;\n// Locate the <tr> element with 'Non Active' attributes using XPath\nconst inActiveElement = await driver.findElement(By.xpath(\"//tr[td[contains(text(), 'Castor')]]\"));\n// Assert that the 'Non Active' user is present\nexpect(await inActiveElement.isDisplayed()).to.be.true;",
               "err": {},
-              "uuid": "a1fdc422-ee5b-4a8a-92ed-6e509cca6d1b",
-              "parentUUID": "32efe730-8b12-40ff-ac08-433c5827cf7b",
+              "uuid": "77ca7d75-de21-405e-8504-eb494b28f164",
+              "parentUUID": "b29f59a6-00ae-40d8-ac5a-2afbcfd0b4cd",
               "isHook": false,
               "skipped": false
             },
@@ -94,7 +94,7 @@
               "title": "Should filter out non-active records when clicking 'Active Only' button",
               "fullTitle": "User Management Page Should filter out non-active records when clicking 'Active Only' button",
               "timedOut": false,
-              "duration": 10098,
+              "duration": 10111,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -103,21 +103,21 @@
               "context": null,
               "code": "const { expect } = await import(\"chai\");\n\n// Click on the 'Active Only' button\nconst activeOnlyButton = await driver.findElement(By.xpath(\"//a[contains(text(), 'Active Only')]\"));\nawait driver.executeScript(\"arguments[0].click();\", activeOnlyButton);\n// Wait for the page to reload and data to update\n// Locate all elements in the 'Active Account' column\nconst activeAccountElements = await driver.findElements(By.xpath(\"//td[contains(@class, 'active-account')]\"));\n// Verify that all elements in the 'Active Account' column have the text 'Yes'\nfor (const element of activeAccountElements) {\n    const text = await element.getText();\n    expect(text).toBe(\"Yes\");\n}\n// Ensure that there are no elements with the text 'No' in the 'Active Account' column\nconst inactiveAccountElements = await driver.findElements(By.xpath(\"//td[contains(@class, 'active-account') and contains(text(), 'No')]\"));\nexpect(inactiveAccountElements.length).to.equal(0);",
               "err": {},
-              "uuid": "a5cb1257-dd5d-4117-9d46-1e0815e160aa",
-              "parentUUID": "32efe730-8b12-40ff-ac08-433c5827cf7b",
+              "uuid": "e61fdb9b-f942-47d6-90ff-05a4d89a2684",
+              "parentUUID": "b29f59a6-00ae-40d8-ac5a-2afbcfd0b4cd",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a1fdc422-ee5b-4a8a-92ed-6e509cca6d1b",
-            "a5cb1257-dd5d-4117-9d46-1e0815e160aa"
+            "77ca7d75-de21-405e-8504-eb494b28f164",
+            "e61fdb9b-f942-47d6-90ff-05a4d89a2684"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 10185,
+          "duration": 10190,
           "root": false,
           "rootEmpty": false,
           "_timeout": 0

@@ -26,8 +26,6 @@ describe("User Management Page", () => {
     it("Should display ALL users when clicking the 'Show All' button", async () => {
         const { expect } = await import("chai");
 
-        //const baseUrl = "https://localhost:7084/users";
-        //await driver.get(baseUrl);
         const element = await driver.findElement(By.xpath("//a[contains(text(), 'Show All')]"));
         await driver.executeScript("arguments[0].click();", element);
         // Locate the <tr> element with 'Active Only' attributes using XPath
