@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 
@@ -75,9 +76,9 @@ public class UsersController : Controller
         return View("List", model);
     }
 
-    // GET: users/details/5
-    [HttpGet("details")]
-    public ActionResult Details(int id)
+    // GET: users/profile/5
+    [HttpGet("profile")]
+    public ActionResult Profile(int id)
     {
         var user = _userService.GetUserById(id).FirstOrDefault();
 
@@ -93,6 +94,35 @@ public class UsersController : Controller
         if (user == null)
         {
             return NotFound();
+        }
+        return View(userViewModel);
+    }
+
+
+    // GET: users/create
+    [HttpGet("create")]
+    public ActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost("create")]
+    [ValidateAntiForgeryToken]
+    public ActionResult Create(UserListItemViewModel userViewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = new User
+            {
+                Forename = userViewModel.Forename ?? string.Empty,
+                Surname = userViewModel.Surname ?? string.Empty,
+                Email = userViewModel.Email ?? string.Empty,
+                DateOfBirth = userViewModel.DateOfBirth,
+                IsActive = userViewModel.IsActive,
+            };
+            _userService.CreateUser(user);
+
+            return RedirectToAction(nameof(List));
         }
         return View(userViewModel);
     }

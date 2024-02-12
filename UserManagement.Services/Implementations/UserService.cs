@@ -30,4 +30,15 @@ public class UserService : IUserService
     /// <param name="id">The ID of the user to retrieve.</param>
     /// <returns>The user with the specified ID, or null if not found.</returns>
     public IEnumerable<User> GetUserById(int id) => _dataAccess.GetAll<User>().Where(u => u.Id == id);
+
+    /// <summary>
+    /// Adds a new user.
+    /// </summary>
+    /// <param name="user">The user to add.</param>
+    public void CreateUser(User user)
+    {
+        user.Id = _dataAccess.GetAll<User>().Max(u => u.Id) + 1;
+        _dataAccess.Create(user);
+    }
+
 }
