@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 
@@ -71,5 +73,27 @@ public class UsersController : Controller
         };
 
         return View("List", model);
+    }
+
+    // GET: users/details/5
+    [HttpGet("details")]
+    public ActionResult Details(int id)
+    {
+        var user = _userService.GetUserById(id).FirstOrDefault();
+
+        var userViewModel = new UserListItemViewModel
+        {
+            Forename = user!.Forename,
+            Surname = user!.Surname,
+            Email = user!.Email,
+            DateOfBirth = user!.DateOfBirth,
+            IsActive = user!.IsActive
+        };
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+        return View(userViewModel);
     }
 }
