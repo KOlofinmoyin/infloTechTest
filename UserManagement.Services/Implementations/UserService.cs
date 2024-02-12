@@ -41,4 +41,22 @@ public class UserService : IUserService
         _dataAccess.Create(user);
     }
 
+    /// <summary>
+    /// Updates an existing user.
+    /// </summary>
+    /// <param name="user">The user with updated information.</param>
+    public void UpdateUser(User user)
+    {
+        var existingUser = _dataAccess.GetAll<User>().FirstOrDefault(u => u.Id == user.Id);
+        if (existingUser != null)
+        {
+            existingUser.Forename = user.Forename;
+            existingUser.Surname = user.Surname;
+            existingUser.Email = user.Email;
+            existingUser.DateOfBirth = user.DateOfBirth;
+            existingUser.IsActive = user.IsActive;
+
+            _dataAccess.Update(existingUser);
+        }
+    }
 }
