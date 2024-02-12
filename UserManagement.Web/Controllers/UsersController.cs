@@ -126,4 +126,55 @@ public class UsersController : Controller
         }
         return View(userViewModel);
     }
+
+    // GET: users/edit/2
+    [HttpGet("edit")]
+    public ActionResult Edit(int id)
+    {
+        var user = _userService.GetUserById(id).FirstOrDefault();
+
+        var userViewModel = new UserListItemViewModel
+        {
+            Forename = user!.Forename,
+            Surname = user!.Surname,
+            Email = user!.Email,
+            DateOfBirth = user!.DateOfBirth,
+            IsActive = user!.IsActive
+        };
+
+        if (userViewModel == null)
+        {
+            return NotFound();
+        }
+        return View(userViewModel);
+    }
+
+    [HttpPost("edit")]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit(int id, UserListItemViewModel userViewModel)
+    {
+        if (id != userViewModel.Id)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            var user = new User
+            {
+                Id = userViewModel.Id,
+                Forename = userViewModel.Forename ?? string.Empty,
+                Surname = userViewModel.Surname ?? string.Empty,
+                Email = userViewModel.Email ?? string.Empty,
+                DateOfBirth = userViewModel.DateOfBirth,
+                IsActive = userViewModel.IsActive,
+            };
+
+            _userService.UpdateUser(user);
+
+            return RedirectToAction(nameof(List));
+        }
+        return View(userViewModel);
+    }
+
 }
