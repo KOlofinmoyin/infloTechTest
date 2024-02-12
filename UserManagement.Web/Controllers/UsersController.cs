@@ -178,4 +178,37 @@ public class UsersController : Controller
         return View(userViewModel);
     }
 
+    // GET: users/delete/2
+    [HttpGet("delete")]
+    public ActionResult Delete(int id)
+    {
+        var user = _userService.GetUserById(id).FirstOrDefault();
+
+        var userViewModel = new UserListItemViewModel
+        {
+            Id = user!.Id,
+            Forename = user!.Forename,
+            Surname = user!.Surname,
+            Email = user!.Email,
+            DateOfBirth = user!.DateOfBirth,
+            IsActive = user!.IsActive
+        };
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        return View(userViewModel);
+    }
+
+    [HttpPost("delete"), ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        _userService.DeleteUser(id);
+
+        return RedirectToAction(nameof(List));
+    }
 }
+    

@@ -59,4 +59,18 @@ public class UserService : IUserService
             _dataAccess.Update(existingUser);
         }
     }
+
+    /// <summary>
+    /// Deletes a user with the specified ID.
+    /// </summary>
+    /// <param name="id">The ID of the user to delete.</param>
+    public void DeleteUser(int Id)
+    {
+        var userToRemove = _dataAccess.GetAll<User>().FirstOrDefault(u => u.Id == Id);
+
+        if (userToRemove != null)
+        {
+            _dataAccess.Delete(userToRemove);
+        }
+    }
 }
