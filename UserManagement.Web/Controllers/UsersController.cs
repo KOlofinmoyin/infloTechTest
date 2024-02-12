@@ -135,6 +135,7 @@ public class UsersController : Controller
 
         var userViewModel = new UserListItemViewModel
         {
+            Id = user!.Id,
             Forename = user!.Forename,
             Surname = user!.Surname,
             Email = user!.Email,
