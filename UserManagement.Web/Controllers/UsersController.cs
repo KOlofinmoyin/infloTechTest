@@ -84,6 +84,7 @@ public class UsersController : Controller
 
         var userViewModel = new UserListItemViewModel
         {
+            Id = user!.Id,
             Forename = user!.Forename,
             Surname = user!.Surname,
             Email = user!.Email,
@@ -131,7 +132,12 @@ public class UsersController : Controller
     [HttpGet("edit")]
     public ActionResult Edit(int id)
     {
-        var user = _userService.GetUserById(id).FirstOrDefault();
+        var user = _userService.GetUserById(id)?.FirstOrDefault();
+
+        if (user == null)
+        {
+            return NotFound();
+        }
 
         var userViewModel = new UserListItemViewModel
         {
@@ -143,10 +149,6 @@ public class UsersController : Controller
             IsActive = user!.IsActive
         };
 
-        if (userViewModel == null)
-        {
-            return NotFound();
-        }
         return View(userViewModel);
     }
 

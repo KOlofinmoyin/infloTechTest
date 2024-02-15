@@ -10,6 +10,5 @@
 
   <ItemGroup>
     <Content Remove="Views\Users\Details.cshtml" />
-    <Content Remove="Views\Users\Edit.cshtml" />
   </ItemGroup>
 </Project>
