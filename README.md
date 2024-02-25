@@ -6,6 +6,8 @@ The exercise is an ASP.NET Core web application backed by Entity Framework Core,
 We recommend that you use [Visual Studio (Community Edition)](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/Download) to run and modify the application. 
 
 
+![UserMgmtApp](https://github.com/KOlofinmoyin/infloTechTest/assets/33905131/2836c967-8db1-40b3-a09a-608dc9ae187d)
+
 
 **The application uses an in-memory database, so changes will not be persisted between executions.**
 
