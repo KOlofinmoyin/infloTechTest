@@ -1,9 +1,11 @@
 [![TechTest - Pull Request, Build, Test, and Deploy GitHub Actions](https://github.com/KOlofinmoyin/infloTechTest/actions/workflows/git-hub-actions.yml/badge.svg)](https://github.com/KOlofinmoyin/infloTechTest/actions/workflows/git-hub-actions.yml)
 
-# User Management Technical Exercise - by Kehinde P. Olofinmoyin
+# User Management Technical Exercise
 
 The exercise is an ASP.NET Core web application backed by Entity Framework Core, which faciliates management of some fictional users.
 We recommend that you use [Visual Studio (Community Edition)](https://visualstudio.microsoft.com/downloads) or [Visual Studio Code](https://code.visualstudio.com/Download) to run and modify the application. 
+
+
 
 **The application uses an in-memory database, so changes will not be persisted between executions.**
 
@@ -56,3 +58,43 @@ Some ideas are:
 
 * Please feel free to change or refactor any code that has been supplied within the solution and think about clean maintainable code and architecture when extending the project.
 * If any additional packages, tools or setup are required to run your completed version, please document these thoroughly.
+
+## Set up project
+* `git clone` the repo
+* Install dotnet SDK --version 8.0 or 7.0.405
+
+### Setup Node.js
+* Download and install node version 20
+* Run npm install from the commandline
+
+### Setup Chrome
+* Download and install Chrome version 121
+
+### Setup Chromedriver
+* Download & extract compatible chromedriver e.g. https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/121.0.6167.85/linux64/chromedriver-linux64.zip
+* Add Chromedriver to PATH
+
+### Install npm dependencies
+* To prevent any sort of adverse caching, remove any previous node_modules directory
+* Run npm install
+
+### Build ASP.NET Core application
+* cd into: `UserManagement.Web`, the app directory
+* Run dotnet build from the commandline
+
+### Start ASP.NET Core application
+* From within the app directory: `UserManagement.Web`
+* Run dotnet run --> launches the app. in a new browser window mapped to default url localhost e.g. http://localhost:5000
+
+### Run Selenium tests:
+* From within the app directory: `UserManagement.Web`
+* Run `npm test` _executes the following tests:_
+     ### User Management Page
+         - ✔ Should display ALL users when clicking the 'Show All' button (1650ms)
+         - ✔ Should filter out non-active records when clicking 'Active Only' button (10169ms)
+         - ✔ Should filter out active records when clicking 'Non Active' button (10175ms)
+
+### Open Report of Test Run:
+ * From within the app directory: `UserManagement.Web`
+ * View the test reports in: `./mochawesome-report/mochawesome.html`
+
