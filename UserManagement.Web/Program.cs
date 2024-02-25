@@ -23,8 +23,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Users}/{action=List}/{id?}");
 
 app.Run();
